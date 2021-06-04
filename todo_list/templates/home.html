@@ -1,8 +1,29 @@
 {% extends "base.html" %}
 
 
-{% block content %}
 
-<h1>Hello DJango world</h1>
+{% block content %}
+	{% if all_item %}
+	<table class="table table-bordered">
+		{% for things in all_item %}
+		   {% if things.completed %}
+				<tr class="table-secondary">
+					<td class="striker">{{ things.item }}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center> Delete </center></td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>{{ things.item }}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center> Delete </center></td>
+				</tr>
+			{% endif %}	
+						
+		{% endfor %}
+				
+
+	</table>
+	{% endif %}
 
 {% endblock %}
